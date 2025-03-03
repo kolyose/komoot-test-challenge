@@ -1,9 +1,9 @@
 import { format } from 'date-fns'
-import TimerIcon from './icons/Timer'
-import DistanceIcon from './icons/Distance'
-import ElevationUpIcon from './icons/ElevationUp'
-import ElevationDownIcon from './icons/ElevationDown'
 import CardStat from './CardStat'
+import DistanceIcon from './icons/Distance'
+import ElevationDownIcon from './icons/ElevationDown'
+import ElevationUpIcon from './icons/ElevationUp'
+import TimerIcon from './icons/Timer'
 
 interface CardStatsProps {
   duration: number
@@ -22,7 +22,7 @@ function CardStats({
   elevationDown,
 }: CardStatsProps) {
   return (
-    <section className="flex items-center justify-around">
+    <section className="flex items-center justify-evenly">
       <CardStat
         value={format(new Date(duration * 1000), 'HH:mm')}
         icon={<TimerIcon />}

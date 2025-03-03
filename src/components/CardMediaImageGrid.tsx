@@ -22,10 +22,8 @@ function CardMediaImageGrid({ images, width, height }: CardMediaImagesProps) {
         const scaleFactor = calcTileSizeScaleFactors(index)
         return {
           src,
-          width: Math.round(width * scaleFactor.width - GAP),
-          height: Math.round(
-            height * scaleFactor.height - GAP * Math.ceil(index / 2),
-          ),
+          width: width * scaleFactor.width - GAP,
+          height: height * scaleFactor.height - GAP * Math.ceil(index / 2),
         }
       })
       formatAndCacheUrls(urlFormatData)

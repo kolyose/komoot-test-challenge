@@ -5,9 +5,9 @@ interface CardStatProps {
 
 function CardStat({ value, icon }: CardStatProps) {
   return (
-    <div className="flex items-center justify-center gap-2 p-2 text-gray-500">
+    <div className="flex items-center justify-center gap-1 p-1 text-gray-500 sm:gap-2 sm:p-2">
       <span className="size-5">{icon}</span>
-      <span className="font-semibold">{value}</span>
+      <span className="text-sm font-semibold sm:text-base">{value}</span>
     </div>
   )
 }

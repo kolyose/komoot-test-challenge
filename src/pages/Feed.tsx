@@ -18,8 +18,8 @@ const fetchTours = async (
     camelcaseKeys(json, { deep: true })
 
   return {
-    rows: data.tours,
-    nextCursor: data.links.next,
+    rows: data.tours.slice(0, 3),
+    nextCursor: undefined /* data.links.next */,
   }
 }
 
@@ -79,7 +79,7 @@ function Feed() {
       ) : status === 'error' ? (
         <span>Error: {error.message}</span>
       ) : (
-        <div ref={listRef} className="flex justify-center p-4">
+        <div ref={listRef} className="flex justify-center">
           <div
             style={{ height: `${virtualizer.getTotalSize()}px` }}
             className="relative w-full max-w-[800px]"

@@ -6,8 +6,8 @@ export const injectSizeIntoUrl = (
   height?: number,
 ) => {
   const processedUrl = url
-    .replace(/\{width\}/g, width.toString())
-    .replace(/\{height\}/g, (height || width).toString())
+    .replace(/\{width\}/g, Math.round(width).toString())
+    .replace(/\{height\}/g, Math.round(height || width).toString())
 
   console.log('URL:', processedUrl)
   return processedUrl

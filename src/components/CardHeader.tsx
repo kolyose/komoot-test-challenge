@@ -29,14 +29,14 @@ function CardHeader({ title, src, name, date }: CardHeaderProps) {
           <img className="rounded-full" src={avatarUrl} alt="Avatar" />
         </div>
         <div className="flex flex-col items-start">
-          <div>
-            <span>{name}</span>
+          <div className="inline">
+            <span className="whitespace-nowrap">{name}</span>
             <span>went on an adventure</span>
           </div>
           <p className="text-gray-500">{formattedDate}</p>
         </div>
       </div>
-      <h3>{title}</h3>
+      <h3 className="text-2xl font-bold">{title}</h3>
       <hr className="border-gray-200" />
     </header>
   )

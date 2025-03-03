@@ -39,7 +39,7 @@ function ActivityCard(props: TourData) {
   }, [])
 
   return (
-    <div className="flex h-full w-full flex-col gap-2 rounded-xs bg-white p-4 shadow-md">
+    <div className="flex h-full w-full flex-col gap-2 rounded-xs bg-white p-2 shadow-md sm:p-4">
       <CardHeader title={name} src={src} name={displayName} date={date} />
       <CardStats
         duration={timeInMotion}
