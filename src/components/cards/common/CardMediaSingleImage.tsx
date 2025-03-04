@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import useFormattedUrlCache from '../hooks/useFormattedUrlCache'
+import useFormattedUrlCache from '../../../hooks/useFormattedUrlCache'
 import { CardMediaImagesProps } from './CardMediaGallery'
 
 function CardMediaSingleImage({ images, width, height }: CardMediaImagesProps) {

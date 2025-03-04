@@ -1,9 +1,9 @@
 import { format } from 'date-fns'
+import DistanceIcon from '../../icons/Distance'
+import ElevationDownIcon from '../../icons/ElevationDown'
+import ElevationUpIcon from '../../icons/ElevationUp'
+import TimerIcon from '../../icons/Timer'
 import CardStat from './CardStat'
-import DistanceIcon from './icons/Distance'
-import ElevationDownIcon from './icons/ElevationDown'
-import ElevationUpIcon from './icons/ElevationUp'
-import TimerIcon from './icons/Timer'
 
 interface CardStatsProps {
   duration: number

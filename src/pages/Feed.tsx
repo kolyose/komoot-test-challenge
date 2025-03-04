@@ -2,7 +2,8 @@ import { useInfiniteQuery } from '@tanstack/react-query'
 import { useWindowVirtualizer } from '@tanstack/react-virtual'
 import camelcaseKeys from 'camelcase-keys'
 import React, { useEffect } from 'react'
-import ActivityCard from '../components/ActivityCard'
+import ActivityCard from '../components/cards/ActivityCard'
+import Spinner from '../components/Spinner'
 import { TourData } from '../types/api'
 
 const fetchTours = async (
@@ -14,12 +15,13 @@ const fetchTours = async (
       pageParam,
   )
   const json = await res.json()
+  /* const json = mockData */
   const data: { tours: Array<TourData>; links: { next: string } } =
     camelcaseKeys(json, { deep: true })
 
   return {
-    rows: data.tours.slice(0, 3),
-    nextCursor: undefined /* data.links.next */,
+    rows: data.tours,
+    nextCursor: data.links.next,
   }
 }
 
@@ -28,7 +30,6 @@ function Feed() {
     status,
     data,
     error,
-    isFetching,
     isFetchingNextPage,
     fetchNextPage,
     hasNextPage,
@@ -46,7 +47,6 @@ function Feed() {
     estimateSize: () => 500,
     overscan: 5,
     gap: 24,
-    // scrollMargin: listRef.current?.offsetTop ?? 0,
   })
 
   useEffect(() => {
@@ -75,7 +75,7 @@ function Feed() {
   return (
     <>
       {status === 'pending' ? (
-        <p>Loading...</p>
+        <Spinner />
       ) : status === 'error' ? (
         <span>Error: {error.message}</span>
       ) : (
@@ -99,9 +99,9 @@ function Feed() {
                 >
                   {isLoaderRow ? (
                     hasNextPage ? (
-                      'Loading more...'
+                      <Spinner />
                     ) : (
-                      'Nothing more to load'
+                      "Congrats, you've seen it all! Come back later to explore new adventures!"
                     )
                   ) : (
                     <ActivityCard {...tourData} />
@@ -112,9 +112,6 @@ function Feed() {
           </div>
         </div>
       )}
-      <div>
-        {isFetching && !isFetchingNextPage ? 'Background Updating...' : null}
-      </div>
     </>
   )
 }

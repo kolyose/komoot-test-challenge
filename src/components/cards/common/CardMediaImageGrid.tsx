@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import useFormattedUrlCache from '../hooks/useFormattedUrlCache'
+import useFormattedUrlCache from '../../../hooks/useFormattedUrlCache'
 import { CardMediaImagesProps } from './CardMediaGallery'
 
 const FIRST_COLUMN_SCALE_FACTOR = 0.6
@@ -42,6 +42,7 @@ function CardMediaImageGrid({ images, width, height }: CardMediaImagesProps) {
         {images.map(({ id }, index) => {
           return (
             <div key={id} className={`${index === 0 ? 'row-span-2' : ''}`}>
+             
               <img
                 className="rounded-xs object-cover"
                 src={urls[index]}
