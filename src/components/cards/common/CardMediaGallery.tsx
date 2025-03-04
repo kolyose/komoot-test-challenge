@@ -1,6 +1,6 @@
+import { TourData } from '../../../api'
 import useElementSize from '../../../hooks/useElementSize'
 import useMediaQuery from '../../../hooks/useMediaQuery'
-import { TourData } from '../../../types/api'
 import CardMediaImageGrid from './CardMediaImageGrid'
 import CardMediaSingleImage from './CardMediaSingleImage'
 

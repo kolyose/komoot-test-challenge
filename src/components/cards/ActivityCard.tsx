@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
+import { TourData } from '../../api'
 import useFormattedUrlCache from '../../hooks/useFormattedUrlCache'
-import { TourData } from '../../types/api'
 import CardHeader from './common/CardHeader'
 import CardMediaGallery from './common/CardMediaGallery'
 import CardMediaMap from './common/CardMediaMap'
@@ -9,10 +9,7 @@ import CardMediaModeToggle, {
 } from './common/CardMediaModeToggle'
 import CardStats from './common/CardStats'
 
-function ActivityCard(props?: TourData) {
-  console.log('props: ', props)
-  if (!props) return null
-
+function ActivityCard(props: TourData) {
   const {
     name,
     displayName,

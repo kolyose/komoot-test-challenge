@@ -31,7 +31,7 @@ function CardHeader({ title, src, name, date }: CardHeaderProps) {
         <div className="flex flex-col items-start">
           <div className="inline">
             <span className="whitespace-nowrap">{name}</span>
-            <span>went on an adventure</span>
+            <span> went on an adventure</span>
           </div>
           <p className="text-gray-500">{formattedDate}</p>
         </div>

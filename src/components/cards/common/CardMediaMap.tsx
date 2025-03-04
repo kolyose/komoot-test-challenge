@@ -1,4 +1,4 @@
-import { TourData } from '../../../types/api'
+import { TourData } from '../../../api'
 
 interface CardMediaMapProps {
   image: TourData['vectorMapImage']
