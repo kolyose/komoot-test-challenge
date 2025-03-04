@@ -6,6 +6,8 @@ import ActivityCard from '../components/cards/ActivityCard'
 import SkeletonCard from '../components/cards/SkeletonCard'
 import Spinner from '../components/Spinner'
 
+import 'react-toastify/dist/ReactToastify.css'
+
 const CARD_HEIGHT = 500
 const CARD_GAP = 24
 
@@ -68,48 +70,42 @@ function Feed() {
     virtualizer.getVirtualItems(),
   ])
 
+  useEffect(() => {
+    if (status === 'error') {
+      throw new Error(error.message)
+    }
+  }, [status])
+
   return (
     <>
-      {status === 'error' ? (
-        <span>Error: {error.message}</span>
-      ) : (
-        <div ref={listRef} className="flex justify-center">
-          <div
-            style={{ height: `${virtualizer.getTotalSize()}px` }}
-            className="relative w-full max-w-[800px]"
-          >
-            {status === 'pending' ? (
-              <SkeletonCards />
-            ) : (
-              virtualizer.getVirtualItems().map((virtualRow) => {
-                const isLoaderRow = virtualRow.index > allRows.length - 1
-                const tourData = allRows[virtualRow.index]
+      <div ref={listRef} className="flex justify-center">
+        <div
+          style={{ height: `${virtualizer.getTotalSize()}px` }}
+          className="relative w-full max-w-[800px]"
+        >
+          {status !== 'success' ? (
+            <SkeletonCards />
+          ) : (
+            virtualizer.getVirtualItems().map((virtualRow) => {
+              const isLoaderRow = virtualRow.index > allRows.length - 1
+              const tourData = allRows[virtualRow.index]
 
-                return (
-                  <div
-                    key={virtualRow.index}
-                    className="absolute top-0 left-0 w-full"
-                    style={{
-                      height: `${virtualRow.size}px`,
-                      transform: `translateY(${virtualRow.start}px)`,
-                    }}
-                  >
-                    {isLoaderRow ? (
-                      hasNextPage ? (
-                        <Spinner />
-                      ) : (
-                        "Congrats, you've seen it all! Come back later to explore new adventures!"
-                      )
-                    ) : (
-                      <ActivityCard {...tourData} />
-                    )}
-                  </div>
-                )
-              })
-            )}
-          </div>
+              return (
+                <div
+                  key={virtualRow.index}
+                  className="absolute top-0 left-0 w-full"
+                  style={{
+                    height: `${virtualRow.size}px`,
+                    transform: `translateY(${virtualRow.start}px)`,
+                  }}
+                >
+                  {isLoaderRow ? <Spinner /> : <ActivityCard {...tourData} />}
+                </div>
+              )
+            })
+          )}
         </div>
-      )}
+      </div>
     </>
   )
 }
