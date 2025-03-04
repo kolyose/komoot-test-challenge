@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+aws-deploy/.terraform*
+aws-deploy/terraform*
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
