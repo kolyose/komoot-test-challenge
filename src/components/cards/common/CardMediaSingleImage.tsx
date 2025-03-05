@@ -2,7 +2,12 @@ import { useEffect } from 'react'
 import useFormattedUrlCache from '../../../hooks/useFormattedUrlCache'
 import { CardMediaImagesProps } from './CardMediaGallery'
 
-function CardMediaSingleImage({ images, width, height }: CardMediaImagesProps) {
+function CardMediaSingleImage({
+  images,
+  width,
+  height,
+  onSelect,
+}: CardMediaImagesProps) {
   const [[url], formatAndCacheUrls] = useFormattedUrlCache()
 
   useEffect(() => {
@@ -12,7 +17,13 @@ function CardMediaSingleImage({ images, width, height }: CardMediaImagesProps) {
   }, [width])
 
   return (
-    <div className="flex">
+    <div
+      className="flex"
+      onClick={(e) => {
+        e.stopPropagation()
+        onSelect(0)
+      }}
+    >
       <img
         className="h-full w-full rounded-xs object-cover"
         src={url}

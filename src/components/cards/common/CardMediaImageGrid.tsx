@@ -13,7 +13,12 @@ const calcTileSizeScaleFactors = (
     ? { width: FIRST_COLUMN_SCALE_FACTOR, height: 1 }
     : { width: SECOND_COLUMN_SCALE_FACTOR, height: 0.5 }
 
-function CardMediaImageGrid({ images, width, height }: CardMediaImagesProps) {
+function CardMediaImageGrid({
+  images,
+  width,
+  height,
+  onSelect,
+}: CardMediaImagesProps) {
   const [urls, formatAndCacheUrls] = useFormattedUrlCache()
 
   useEffect(() => {
@@ -41,7 +46,7 @@ function CardMediaImageGrid({ images, width, height }: CardMediaImagesProps) {
       >
         {images.map(({ id }, index) => {
           return (
-            <div key={id} className={`${index === 0 ? 'row-span-2' : ''}`}>
+            <div key={id} className={`${index === 0 ? 'row-span-2' : ''}`} onClick={() => onSelect(index)}>
               <img
                 className="rounded-xs object-cover"
                 src={urls[index]}
