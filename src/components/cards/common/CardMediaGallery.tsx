@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { TourData } from '../../../api'
 import useElementSize from '../../../hooks/useElementSize'
 import useMediaQuery from '../../../hooks/useMediaQuery'
-import ImageViewer from '../../ImageViewer'
+import ImageGallery from '../../gallery/ImageGallery'
 import CardMediaImageGrid from './CardMediaImageGrid'
 import CardMediaSingleImage from './CardMediaSingleImage'
 
@@ -25,8 +25,8 @@ function CardMediaGallery({ images }: CardMediaGalleryProps) {
   const isGridMode = isLargeScreen && images.length > 2
 
   return (
-    <section ref={ref} className="h-192 w-full">
-      <ImageViewer
+    <section ref={ref} className="h-192 w-full overflow-hidden">
+      <ImageGallery
         images={images}
         selectedIndex={selectedImageIndex}
         setSelectedIndex={setSelectedImageIndex}

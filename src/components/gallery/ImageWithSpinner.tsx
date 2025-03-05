@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import Spinner from './Spinner'
+import Spinner from '../Spinner'
 
 const ImageWithSpinner = (props: React.ImgHTMLAttributes<HTMLImageElement>) => {
   const [isLoading, setIsLoading] = useState(false)

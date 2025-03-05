@@ -1,0 +1,13 @@
+:global(.custom-swiper) {
+  border-radius: 4px;
+}
+
+:global(.custom-swiper .swiper-pagination-bullet) {
+  background-color: green;
+  opacity: 50%;
+}
+
+:global(.custom-swiper .swiper-pagination-bullet-active) {
+  background-color: green;
+  opacity: 100% !important;
+}
