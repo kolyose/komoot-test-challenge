@@ -15,6 +15,7 @@ function ActivityCard(props: TourData) {
     displayName,
     date,
     creator: {
+      username,
       avatar: { src },
     },
     timeInMotion,
@@ -24,6 +25,7 @@ function ActivityCard(props: TourData) {
     images,
     vectorMapImage,
     vectorMapImagePreview,
+    isPremium,
   } = props
   const [isMapMode, setIsMapVisible] = useState(false)
   const [[galleryPreviewSrc], formatUrls] = useFormattedUrl()
@@ -40,7 +42,14 @@ function ActivityCard(props: TourData) {
 
   return (
     <div className="flex h-full w-full flex-col gap-2 rounded-xs bg-white p-2 shadow-md sm:p-4">
-      <CardHeader title={name} src={src} name={displayName} date={date} />
+      <CardHeader
+        title={name}
+        src={src}
+        name={displayName}
+        date={date}
+        username={username}
+        isPremium={isPremium}
+      />
       <CardStats
         duration={timeInMotion}
         distance={distance}

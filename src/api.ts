@@ -1,5 +1,4 @@
 import camelcaseKeys from 'camelcase-keys'
-/* import mockData from 'data.json' */
 
 export type TourStatus = 'public' | 'private'
 
@@ -19,7 +18,7 @@ export interface TourCreator {
 export interface TourData {
   id: string
   name: string
-  status: string /* TourStatus; */
+  status: TourStatus
   date: string
   distance: number
   timeInMotion: number
@@ -27,8 +26,8 @@ export interface TourData {
   elevationDown: number
   creator: TourCreator
   displayName: string
-  isPremium: string /* boolean; */
-  images: Array<{ id: number /* string */; src: string; templated: boolean }>
+  isPremium: 'true' | 'false'
+  images: Array<{ id: string; src: string; templated: boolean }>
   vectorMapImage: VectorMapImage
   vectorMapImagePreview: VectorMapImage
 }
@@ -42,7 +41,6 @@ export const fetchTours = async (
       pageParam,
   )
   const json = await res.json()
-  /* const json = mockData */
   const data: { tours: Array<TourData>; links: { next: string } } =
     camelcaseKeys(json, { deep: true })
 
