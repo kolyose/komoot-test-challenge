@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import useFormattedUrlCache from '../../../hooks/useFormattedUrlCache'
+import useFormattedUrl from '../../../hooks/useFormattedUrlCache'
 
 interface CardHeaderProps {
   name: string
@@ -10,7 +10,7 @@ interface CardHeaderProps {
 
 const AVATAR_SIZE = 30
 function CardHeader({ title, src, name, date }: CardHeaderProps) {
-  const [[avatarUrl], formatAndCacheUrls] = useFormattedUrlCache()
+  const [[avatarUrl], formatUrls] = useFormattedUrl()
 
   const formattedDate = new Date(date).toLocaleDateString('en-US', {
     year: 'numeric',
@@ -19,7 +19,7 @@ function CardHeader({ title, src, name, date }: CardHeaderProps) {
   })
 
   useEffect(() => {
-    formatAndCacheUrls([{ src, width: AVATAR_SIZE, height: AVATAR_SIZE }])
+    formatUrls([{ src, width: AVATAR_SIZE, height: AVATAR_SIZE }])
   }, [])
 
   return (

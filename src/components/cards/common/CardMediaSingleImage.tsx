@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import useFormattedUrlCache from '../../../hooks/useFormattedUrlCache'
+import useFormattedUrl from '../../../hooks/useFormattedUrlCache'
 import { CardMediaImagesProps } from './CardMediaGallery'
 
 function CardMediaSingleImage({
@@ -8,11 +8,11 @@ function CardMediaSingleImage({
   height,
   onSelect,
 }: CardMediaImagesProps) {
-  const [[url], formatAndCacheUrls] = useFormattedUrlCache()
+  const [[url], formatUrls] = useFormattedUrl()
 
   useEffect(() => {
     if (width) {
-      formatAndCacheUrls([{ src: images[0].src, width, height }])
+      formatUrls([{ src: images[0].src, width, height }])
     }
   }, [width])
 

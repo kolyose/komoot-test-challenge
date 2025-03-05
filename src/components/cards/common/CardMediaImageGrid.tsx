@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import useFormattedUrlCache from '../../../hooks/useFormattedUrlCache'
+import useFormattedUrl from '../../../hooks/useFormattedUrlCache'
 import { CardMediaImagesProps } from './CardMediaGallery'
 
 const FIRST_COLUMN_SCALE_FACTOR = 0.6
@@ -19,7 +19,7 @@ function CardMediaImageGrid({
   height,
   onSelect,
 }: CardMediaImagesProps) {
-  const [urls, formatAndCacheUrls] = useFormattedUrlCache()
+  const [urls, formatUrls] = useFormattedUrl()
 
   useEffect(() => {
     if (width) {
@@ -31,7 +31,7 @@ function CardMediaImageGrid({
           height: height * scaleFactor.height - GAP * Math.ceil(index / 2),
         }
       })
-      formatAndCacheUrls(urlFormatData)
+      formatUrls(urlFormatData)
     }
   }, [width])
 

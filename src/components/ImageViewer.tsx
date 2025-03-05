@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
 import { TourData } from '../api'
-import useFormattedUrlCache from '../hooks/useFormattedUrlCache'
+import useFormattedUrl from '../hooks/useFormattedUrlCache'
 import ImageWithSpinner from './ImageWithSpinner'
 
 const ANIMATION_DURATION = 300
@@ -15,7 +15,7 @@ enum AnimationDirection {
 interface ImageViewerProps {
   images: TourData['images']
   selectedIndex?: number
-  setSelectedIndex: any /* React.Dispatch<React.SetStateAction<number | undefined>> */
+  setSelectedIndex: React.Dispatch<React.SetStateAction<number | undefined>>
 }
 
 export const calculateCircularIndexes = (
@@ -31,7 +31,7 @@ const ImageViewer = ({
   selectedIndex,
   setSelectedIndex,
 }: ImageViewerProps) => {
-  const [urls, formatAndCacheUrls] = useFormattedUrlCache()
+  const [urls, formatUrls] = useFormattedUrl()
   const [size, setSize] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
@@ -73,7 +73,7 @@ const ImageViewer = ({
 
   useEffect(() => {
     if (selectedIndex !== undefined) {
-      formatAndCacheUrls(
+      formatUrls(
         images.map(({ src }) => ({
           src,
           width: size.width,

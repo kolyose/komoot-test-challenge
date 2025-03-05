@@ -18,16 +18,16 @@ export interface UrlFormatData {
   height: number
 }
 
-export default function useFormattedUrlCache() {
-  const [cache, setCache] = useState<Array<string>>([])
+export default function useFormattedUrl() {
+  const [state, setState] = useState<Array<string>>([])
 
   function format(urlData: Array<UrlFormatData>) {
     const formattedUrls = urlData.map(({ src, width, height }) =>
       injectSizeIntoUrl(src, width, height),
     ) as Array<string>
 
-    setCache(formattedUrls)
+    setState(formattedUrls)
   }
 
-  return [cache, format] as const
+  return [state, format] as const
 }

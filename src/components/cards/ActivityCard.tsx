@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { TourData } from '../../api'
-import useFormattedUrlCache from '../../hooks/useFormattedUrlCache'
+import useFormattedUrl from '../../hooks/useFormattedUrlCache'
 import CardHeader from './common/CardHeader'
 import CardMediaGallery from './common/CardMediaGallery'
 import CardMediaMap from './common/CardMediaMap'
@@ -26,10 +26,10 @@ function ActivityCard(props: TourData) {
     vectorMapImagePreview,
   } = props
   const [isMapMode, setIsMapVisible] = useState(false)
-  const [[galleryPreviewSrc], formatAndCacheUrls] = useFormattedUrlCache()
+  const [[galleryPreviewSrc], formatUrls] = useFormattedUrl()
 
   useEffect(() => {
-    formatAndCacheUrls([
+    formatUrls([
       {
         src: images[0].src,
         width: MEDIA_MODE_TOGGLE_SIZE,
