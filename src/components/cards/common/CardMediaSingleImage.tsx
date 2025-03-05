@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import useFormattedUrl from '../../../hooks/useFormattedUrlCache'
+import useFormattedUrl from '../../../hooks/useFormattedUrl'
 import { CardMediaImagesProps } from './CardMediaGallery'
 
 function CardMediaSingleImage({
@@ -18,11 +18,8 @@ function CardMediaSingleImage({
 
   return (
     <div
-      className="flex"
-      onClick={(e) => {
-        e.stopPropagation()
-        onSelect(0)
-      }}
+      className="flex cursor-pointer bg-gray-100 transition-transform duration-300 ease-in-out hover:scale-99"
+      onClick={() => onSelect(0)}
     >
       <img
         className="h-full w-full rounded-xs object-cover"

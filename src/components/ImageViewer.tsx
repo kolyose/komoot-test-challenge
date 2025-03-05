@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react'
+import throttle from 'lodash.throttle'
+import { useCallback, useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
 import { TourData } from '../api'
-import useFormattedUrl from '../hooks/useFormattedUrlCache'
+import useFormattedUrl from '../hooks/useFormattedUrl'
 import ImageWithSpinner from './ImageWithSpinner'
 
 const ANIMATION_DURATION = 300
@@ -45,11 +46,19 @@ const ImageViewer = ({
   const [isAnimating, setIsAnimating] = useState(false)
 
   useEffect(() => {
+    if (selectedIndex !== undefined) {
+      document.body.style.overflow = 'hidden'
+    }
+    return () => {
+      document.body.style.overflow = 'auto'
+    }
+  }, [selectedIndex])
+
+  useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (selectedIndex === undefined) return
       if (event.key === 'Escape') return setSelectedIndex(undefined)
 
-      if (images.length === 1) return
+      if (isAnimating || images.length === 1) return
       if (event.key === 'ArrowLeft') return changeImage(AnimationDirection.LEFT)
       if (event.key === 'ArrowRight')
         return changeImage(AnimationDirection.RIGHT)
@@ -57,7 +66,24 @@ const ImageViewer = ({
 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [selectedIndex])
+  }, [])
+
+  const handleScroll = useCallback(
+    throttle((event: WheelEvent) => {
+      if (isAnimating || images.length === 1) return
+      if (Math.abs(event.deltaX) < 20) return
+
+      event.deltaX < 0
+        ? changeImage(AnimationDirection.RIGHT)
+        : changeImage(AnimationDirection.LEFT)
+    }, ANIMATION_DURATION),
+    [isAnimating, images.length],
+  )
+
+  useEffect(() => {
+    window.addEventListener('wheel', handleScroll)
+    return () => window.removeEventListener('wheel', handleScroll)
+  }, [handleScroll])
 
   useEffect(() => {
     function updateSize() {
@@ -107,7 +133,10 @@ const ImageViewer = ({
   if (selectedIndex === undefined) return null
 
   return ReactDOM.createPortal(
-    <div className="fixed inset-0 z-100 flex items-center justify-center bg-black/80">
+    <div
+      className="fixed inset-0 z-100 flex items-center justify-center bg-black/80"
+      onClick={() => setSelectedIndex(undefined)}
+    >
       <div className="relative flex h-[90vh] w-[90vw] items-center justify-center overflow-hidden">
         <div
           key={selectedIndex}

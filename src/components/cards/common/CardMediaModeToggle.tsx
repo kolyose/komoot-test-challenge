@@ -9,7 +9,7 @@ function CardMediaModeToggle({ src, onToggle }: CardMediaModeToggleProps) {
   return (
     <button
       style={{ height: MEDIA_MODE_TOGGLE_SIZE, width: MEDIA_MODE_TOGGLE_SIZE }}
-      className={`absolute right-8 bottom-8 cursor-pointer overflow-hidden rounded-md bg-white p-1 shadow-md transition-transform duration-300 ease-in-out hover:scale-105`}
+      className={`absolute right-8 bottom-8 z-10 cursor-pointer overflow-hidden rounded-md bg-white p-1 shadow-md transition-transform duration-300 ease-in-out hover:scale-105`}
       onClick={onToggle}
     >
       <img

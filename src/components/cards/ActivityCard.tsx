@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { TourData } from '../../api'
-import useFormattedUrl from '../../hooks/useFormattedUrlCache'
+import useFormattedUrl from '../../hooks/useFormattedUrl'
 import CardHeader from './common/CardHeader'
 import CardMediaGallery from './common/CardMediaGallery'
 import CardMediaMap from './common/CardMediaMap'

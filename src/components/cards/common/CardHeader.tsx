@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import useFormattedUrl from '../../../hooks/useFormattedUrlCache'
+import useFormattedUrl from '../../../hooks/useFormattedUrl'
 
 interface CardHeaderProps {
   name: string
