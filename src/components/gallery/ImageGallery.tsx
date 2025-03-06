@@ -77,6 +77,7 @@ const ImageGallery = ({
 
   return ReactDOM.createPortal(
     <div
+      data-testid="image-gallery"
       className="fixed inset-0 z-100 flex items-center justify-center bg-black/80"
       onClick={() => setSelectedIndex(undefined)}
     >

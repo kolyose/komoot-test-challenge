@@ -18,6 +18,7 @@ function CardMediaSingleImage({
 
   return (
     <button
+      data-testid="card-media-single-image"
       aria-label="Open adventure's media gallery"
       className="flex cursor-pointer bg-gray-100 transition-transform duration-300 ease-in-out hover:scale-99"
       onClick={() => onSelect(0)}

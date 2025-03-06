@@ -37,6 +37,7 @@ function CardMediaImageGrid({
 
           return (
             <button
+              data-testid={`card-media-grid-image-${index}`}
               aria-label="Open adventure's media gallery"
               key={id}
               className={`${index === 0 ? 'row-span-2' : ''} cursor-pointer transition-transform duration-300 ease-in-out hover:scale-99 bg-gray-100`}

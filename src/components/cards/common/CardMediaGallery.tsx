@@ -25,7 +25,11 @@ function CardMediaGallery({ images }: CardMediaGalleryProps) {
   const isGridMode = isLargeScreen && images.length > 2
 
   return (
-    <section ref={ref} className="h-192 w-full overflow-hidden">
+    <section
+      data-testid="card-media"
+      ref={ref}
+      className="h-192 w-full overflow-hidden"
+    >
       <ImageGallery
         images={images}
         selectedIndex={selectedImageIndex}

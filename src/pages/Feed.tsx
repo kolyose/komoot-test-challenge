@@ -68,6 +68,7 @@ function Feed() {
     <>
       <section ref={listRef} className="flex justify-center">
         <div
+          data-testid="feed"
           style={{ height: `${virtualizer.getTotalSize()}px` }}
           className="relative w-full max-w-[800px]"
         >

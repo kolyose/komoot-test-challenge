@@ -27,7 +27,7 @@ export interface TourData {
   creator: TourCreator
   displayName: string
   isPremium: 'true' | 'false'
-  images: Array<{ id: string; src: string; templated: boolean }>
+  images: Array<{ id: number; src: string; templated: boolean }>
   vectorMapImage: VectorMapImage
   vectorMapImagePreview: VectorMapImage
 }

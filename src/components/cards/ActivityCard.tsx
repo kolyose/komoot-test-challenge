@@ -41,7 +41,10 @@ function ActivityCard(props: TourData) {
   }, [])
 
   return (
-    <article className="flex h-full w-full flex-col gap-2 rounded-xs bg-white p-2 shadow-md sm:p-4">
+    <article
+      data-testid="activity-card"
+      className="flex h-full w-full flex-col gap-2 rounded-xs bg-white p-2 shadow-md sm:p-4"
+    >
       <CardHeader
         title={name}
         src={src}

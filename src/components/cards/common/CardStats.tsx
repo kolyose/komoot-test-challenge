@@ -22,7 +22,10 @@ function CardStats({
   elevationDown,
 }: CardStatsProps) {
   return (
-    <section className="flex items-center justify-evenly">
+    <section
+      data-testid="card-stats"
+      className="flex items-center justify-evenly"
+    >
       <CardStat
         value={format(new Date(duration * 1000), 'HH:mm')}
         icon={<TimerIcon />}

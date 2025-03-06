@@ -39,7 +39,10 @@ function CardHeader({
   }, [])
 
   return (
-    <header className="items-left flex flex-col gap-2 text-left">
+    <header
+      data-testid="card-header"
+      className="items-left flex flex-col gap-2 text-left"
+    >
       <div className="flex items-center justify-start gap-2">
         <div>
           <img className="rounded-full" src={urls[0]} alt="User avatar" />
