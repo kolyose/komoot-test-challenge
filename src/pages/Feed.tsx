@@ -3,25 +3,13 @@ import { useWindowVirtualizer } from '@tanstack/react-virtual'
 import React, { useEffect } from 'react'
 import { fetchTours } from '../api'
 import ActivityCard from '../components/cards/ActivityCard'
-import SkeletonCard from '../components/cards/SkeletonCard'
+import SkeletonCards from '../components/cards/SkeletonCards'
 import Spinner from '../components/Spinner'
 
 import 'react-toastify/dist/ReactToastify.css'
 
 const CARD_HEIGHT = 500
 const CARD_GAP = 24
-
-const SkeletonCards = () => {
-  return (
-    <>
-      {Array(20)
-        .fill(0)
-        .map((_, index) => (
-          <SkeletonCard key={index} height={CARD_HEIGHT} gap={CARD_GAP} />
-        ))}
-    </>
-  )
-}
 
 function Feed() {
   const {
@@ -84,7 +72,7 @@ function Feed() {
           className="relative w-full max-w-[800px]"
         >
           {status !== 'success' ? (
-            <SkeletonCards />
+            <SkeletonCards cardCount={20} height={CARD_HEIGHT} gap={CARD_GAP} />
           ) : (
             virtualizer.getVirtualItems().map((virtualRow) => {
               const isLoaderRow = virtualRow.index > allRows.length - 1

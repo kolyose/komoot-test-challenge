@@ -3,6 +3,10 @@ interface SkeletonCardProps {
   gap: number
 }
 
+interface SkeletonCardsProps extends SkeletonCardProps {
+  cardCount: number
+}
+
 const SkeletonCard = ({ height, gap }: SkeletonCardProps) => {
   return (
     <div
@@ -35,4 +39,16 @@ const SkeletonCard = ({ height, gap }: SkeletonCardProps) => {
   )
 }
 
-export default SkeletonCard
+const SkeletonCards = ({ cardCount, ...props }: SkeletonCardsProps) => {
+  return (
+    <>
+      {Array(cardCount)
+        .fill(0)
+        .map((_, index) => (
+          <SkeletonCard key={index} {...props} />
+        ))}
+    </>
+  )
+}
+
+export default SkeletonCards
