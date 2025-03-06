@@ -8,7 +8,7 @@ import { TourData } from '../../api'
 import useFormattedUrl from '../../hooks/useFormattedUrl'
 import ImageWithSpinner from './ImageWithSpinner'
 
-import './ImageGallery.module.css'
+import './ImageGallery.css'
 
 interface ImageViewerProps {
   images: TourData['images']
