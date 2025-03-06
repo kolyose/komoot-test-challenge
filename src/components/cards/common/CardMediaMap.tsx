@@ -10,7 +10,7 @@ function CardMediaMap({ image }: CardMediaMapProps) {
       <img
         className="h-full w-full rounded-xs object-cover"
         src={image.src}
-        alt="Map"
+        alt="Adventure track's map image"
       />
     </section>
   )

@@ -14,8 +14,8 @@ const ImageWithSpinner = (props: React.ImgHTMLAttributes<HTMLImageElement>) => {
       <img
         ref={ref}
         onLoad={() => setIsLoading(false)}
-        {...props}
         className={`${isLoading ? 'opacity-0' : 'opacity-100'}`}
+        {...props}
       />
 
       {isLoading && (

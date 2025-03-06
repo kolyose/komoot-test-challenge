@@ -66,7 +66,7 @@ function Feed() {
 
   return (
     <>
-      <div ref={listRef} className="flex justify-center">
+      <section ref={listRef} className="flex justify-center">
         <div
           style={{ height: `${virtualizer.getTotalSize()}px` }}
           className="relative w-full max-w-[800px]"
@@ -93,7 +93,7 @@ function Feed() {
             })
           )}
         </div>
-      </div>
+      </section>
     </>
   )
 }

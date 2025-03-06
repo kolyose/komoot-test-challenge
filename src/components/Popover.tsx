@@ -15,7 +15,7 @@ const Popover = ({
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
     >
-      <button>{trigger}</button>
+      <button aria-label="Expand user info">{trigger}</button>
 
       <div
         className={`absolute top-0 left-0 mt-6 w-max rounded-lg border border-gray-200 bg-white p-4 transition-opacity duration-300 ${

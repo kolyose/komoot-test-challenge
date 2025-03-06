@@ -42,7 +42,7 @@ function CardHeader({
     <header className="items-left flex flex-col gap-2 text-left">
       <div className="flex items-center justify-start gap-2">
         <div>
-          <img className="rounded-full" src={urls[0]} alt="Avatar" />
+          <img className="rounded-full" src={urls[0]} alt="User avatar" />
         </div>
         <div className="flex flex-col items-start">
           <div className="inline">
@@ -55,7 +55,11 @@ function CardHeader({
             >
               <div className="relative inset-0 flex h-auto w-auto items-center justify-start gap-4 rounded border-gray-300">
                 <div className="shrink-0">
-                  <img className="rounded-full" src={urls[1]} alt="Avatar" />
+                  <img
+                    className="rounded-full"
+                    src={urls[1]}
+                    alt="User avatar"
+                  />
                 </div>
                 <div className="shrink-0 text-xl font-bold">{username}</div>
                 <div className="flex h-8 w-8">

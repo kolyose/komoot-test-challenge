@@ -36,7 +36,8 @@ function CardMediaImageGrid({
           const url = injectSizeIntoUrl(src, w, h)
 
           return (
-            <div
+            <button
+              aria-label="Open adventure's media gallery"
               key={id}
               className={`${index === 0 ? 'row-span-2' : ''} cursor-pointer transition-transform duration-300 ease-in-out hover:scale-99 bg-gray-100`}
               style={{ width: `${w}px`, height: `${h}px`}}
@@ -45,9 +46,9 @@ function CardMediaImageGrid({
               <img
                 className="rounded-xs object-cover"
                 src={url}
-                alt="Image"
+                alt="Adventure's media gallery thumbnail"
               />
-            </div>
+            </button>
           )
         })}
       </div>

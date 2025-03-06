@@ -90,7 +90,7 @@ const ImageGallery = ({
               <SwiperSlide key={id}>
                 <ImageWithSpinner
                   src={urls[index]}
-                  alt={`Slide ${index + 1}`}
+                  alt={`Adventure image gallery slide ${index + 1}`}
                 />
               </SwiperSlide>
             )

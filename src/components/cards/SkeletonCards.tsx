@@ -9,7 +9,7 @@ interface SkeletonCardsProps extends SkeletonCardProps {
 
 const SkeletonCard = ({ height, gap }: SkeletonCardProps) => {
   return (
-    <div
+    <article
       className="flex w-full flex-col gap-2 rounded bg-white p-2 shadow-md sm:p-4"
       style={{ height, marginBottom: gap }}
     >
@@ -35,7 +35,7 @@ const SkeletonCard = ({ height, gap }: SkeletonCardProps) => {
         </div>
         <div className="w-full flex-1 rounded bg-gray-200" />
       </span>
-    </div>
+    </article>
   )
 }
 
