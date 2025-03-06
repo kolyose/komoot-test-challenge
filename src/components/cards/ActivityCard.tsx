@@ -60,12 +60,6 @@ function ActivityCard(props: TourData) {
         src={isMapMode ? galleryPreviewSrc : vectorMapImagePreview.src}
         onToggle={() => setIsMapVisible(!isMapMode)}
       />
-      {/* TODO:
-        Try animations (absolute/grid) with 'contents' attribute:
-        <div className="contents">
-          {showFirst ? <Container1 /> : <Container2 />}
-        </div>
-       */}
       {isMapMode ? (
         <CardMediaMap image={vectorMapImage} />
       ) : (

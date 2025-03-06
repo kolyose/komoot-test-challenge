@@ -35,7 +35,6 @@ export interface TourData {
 export const fetchTours = async (
   pageParam: string,
 ): Promise<{ rows: Array<TourData>; nextCursor?: string }> => {
-  // TODO: take the URL from a config file
   const res = await fetch(
     'https://5cmf66e3ssmsx6mikgeh3mq4mu0fhzvp.lambda-url.eu-west-1.on.aws' +
       pageParam,
