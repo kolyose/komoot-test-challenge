@@ -53,9 +53,7 @@ function CardHeader({
             <Popover
               onChange={setIsPopoverOpen}
               trigger={
-                <a href="#" className="whitespace-nowrap text-blue-500">
-                  {name}
-                </a>
+                <a className="whitespace-nowrap text-blue-500">{name}</a>
               }
             >
               <div className="relative inset-0 flex h-auto w-auto items-center justify-start gap-4 rounded border-gray-300">
