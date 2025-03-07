@@ -8,6 +8,7 @@ import { TourData } from '../../api'
 import useFormattedUrl from '../../hooks/useFormattedUrl'
 import ImageWithSpinner from './ImageWithSpinner'
 
+import Spinner from '../Spinner'
 import './ImageGallery.css'
 
 interface ImageViewerProps {
@@ -21,6 +22,7 @@ const ImageGallery = ({
   selectedIndex,
   setSelectedIndex,
 }: ImageViewerProps) => {
+  const [isLoading, setIsLoading] = useState(true)
   const [urls, formatUrls] = useFormattedUrl()
   const [size, setSize] = useState({
     width: window.innerWidth,
@@ -94,12 +96,12 @@ const ImageGallery = ({
             bulletActiveClass: 'swiper-pagination-bullet-active',
           }}
           loop
-          keyboard={{}}
+          keyboard
           modules={[Mousewheel, Pagination, Keyboard]}
         >
           {images.map(({ id }, index) => {
             return (
-              <SwiperSlide key={id}>
+              <SwiperSlide onLoad={() => setIsLoading(false)} key={id}>
                 <ImageWithSpinner
                   src={urls[index]}
                   alt={`Adventure image gallery slide ${index + 1}`}
@@ -108,6 +110,11 @@ const ImageGallery = ({
             )
           })}
         </Swiper>
+        {isLoading && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <Spinner />
+          </div>
+        )}
       </div>
     </div>,
     document.body,
