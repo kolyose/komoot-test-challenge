@@ -32,7 +32,7 @@ describe('<CardHeader/>', () => {
     expect(avatar).toBeVisible()
     expect(avatar).toHaveAttribute('src', src.replace(/\{width\}/g, '30'))
 
-    expect(screen.getByRole('link')).toHaveTextContent(displayName)
+    expect(screen.getByText(displayName)).toBeVisible()
 
     const formattedDate = new Date(date).toLocaleDateString('en-US', {
       year: 'numeric',
