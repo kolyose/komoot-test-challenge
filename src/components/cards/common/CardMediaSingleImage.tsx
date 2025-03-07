@@ -21,6 +21,7 @@ function CardMediaSingleImage({
       data-testid="card-media-single-image"
       aria-label="Open adventure's media gallery"
       className="flex h-full cursor-pointer bg-gray-100 transition-transform duration-300 ease-in-out hover:scale-99"
+      style={{ width: `${width}px`, height: `${height}px` }}
       onClick={() => onSelect(0)}
     >
       <img
