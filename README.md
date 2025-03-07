@@ -1,54 +1,51 @@
-# React + TypeScript + Vite
+# Outdoor Activities Feed
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🚀 Overview
 
-Currently, two official plugins are available:
+This is a React-based web application that displays a **feed of outdoor activities** with **infinite scrolling**. The app is optimized for performance using **react-virtual** and styled with **Tailwind CSS**. Users can browse activities, view image galleries using **Swiper**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+- **Frontend:** React (Vite) + TypeScript
+- **Infinite Scrolling & Virtualization:** react-virtual
+- **Styling:** Tailwind CSS
+- **Image Gallery:** Swiper.js
+- **Testing:** Vitest + React Testing Library
+- **Infrastructure:** Terraform
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📦 Installation & Setup
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+1. **Install dependencies**
+
+   ```sh
+   npm install
+   # or
+   yarn install
+   ```
+
+2. **Start the development server**
+
+   ```sh
+   npm run dev
+   ```
+
+   The app will be available at `http://localhost:5173/`
+
+## 🏗️ Infrastructure Setup (Terraform)
+
+If deploying the infrastructure using Terraform:
+
+```sh
+cd aws-deploy
+terraform init
+terraform apply
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🧪 Running Tests
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+The app is tested with **Vitest** and **React Testing Library**. Run the tests using:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```sh
+npm run test
 ```
+
