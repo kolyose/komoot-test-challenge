@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { TourCreator, TourData } from '../../../api'
 import useFormattedUrl from '../../../hooks/useFormattedUrl'
 import Popover from '../../Popover'
@@ -24,6 +24,7 @@ function CardHeader({
   username,
   isPremium,
 }: CardHeaderProps) {
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false)
   const [urls, formatUrls] = useFormattedUrl()
   const formattedDate = new Date(date).toLocaleDateString('en-US', {
     year: 'numeric',
@@ -50,6 +51,7 @@ function CardHeader({
         <div className="flex flex-col items-start">
           <div className="inline">
             <Popover
+              onChange={setIsPopoverOpen}
               trigger={
                 <a href="#" className="whitespace-nowrap text-blue-500">
                   {name}
@@ -58,11 +60,13 @@ function CardHeader({
             >
               <div className="relative inset-0 flex h-auto w-auto items-center justify-start gap-4 rounded border-gray-300">
                 <div className="shrink-0">
-                  <img
-                    className="rounded-full"
-                    src={urls[1]}
-                    alt="User avatar"
-                  />
+                  {isPopoverOpen && (
+                    <img
+                      className="rounded-full"
+                      src={urls[1]}
+                      alt="User avatar"
+                    />
+                  )}
                 </div>
                 <div className="shrink-0 text-xl font-bold">{username}</div>
                 <div className="flex h-8 w-8">

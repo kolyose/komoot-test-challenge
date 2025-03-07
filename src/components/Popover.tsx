@@ -1,13 +1,19 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const Popover = ({
   trigger,
   children,
+  onChange,
 }: {
   trigger: React.ReactNode
   children: React.ReactNode
+  onChange?: (isOpen: boolean) => void
 }) => {
   const [isOpen, setIsOpen] = useState(false)
+
+  useEffect(() => {
+    onChange?.(isOpen)
+  }, [isOpen])
 
   return (
     <div
