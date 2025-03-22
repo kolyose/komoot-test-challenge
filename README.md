@@ -11,7 +11,7 @@ This is a React-based web application that displays a **feed of outdoor activiti
 - **Styling:** Tailwind CSS
 - **Image Gallery:** Swiper.js
 - **Testing:** Vitest + React Testing Library
-- **Infrastructure:** Terraform
+- **Infrastructure:** Terraform (AWS S3 + CloudFront)
 
 ## 📦 Installation & Setup
 
